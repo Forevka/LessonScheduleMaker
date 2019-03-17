@@ -1,0 +1,70 @@
+{
+  "available_days": ["monday", "tuesday", "wednesday", "thirdsday", "friday"],
+  "group_list": ["kn-323", "kn-49"],
+  "start_at": {"1":"8:45", "2":"10:20", "3":"12:10", "4":"14:00", "5": "15:30", "6": "17:00"},
+  "lection_long": "110",
+  "group":
+  {
+    "kn-323":
+    {
+      "lessons":
+      {
+        "Політологія":
+        {"control": "exam", "teachers": ["EKM"], "lection": {"count":2, "per_day":1}, "laba": {"count":0, "per_day":1}, "practice": {"count":1, "per_day":1}},
+        "Моделювання систем":
+        {"control": "exam", "teachers": ["Малиник"], "lection": {"count":2, "per_day":1}, "laba": {"count":1, "per_day":1}, "practice":{"count":1, "per_day":1}},
+        "Проектування програмних систем":
+        {"control": "exam", "teachers": ["Ковівчак", "Кинаш"], "lection":{"count":1, "per_day":1}, "laba":{"count":1, "per_day":1}, "practice":{"count":1, "per_day":1}},
+        "Технології розподілених систем та паралельних обчислень ч.1":
+        {"control": "exam", "teachers": ["???"], "lection": {"count":3, "per_day":1}, "laba": {"count":1, "per_day":1}, "practice":{"count":0, "per_day":1}},
+        "Крос-платформне програмування, КР":
+        {"control": "залік", "teachers": ["Машевська"], "lection": {"count":0, "per_day":1}, "laba": {"count":0, "per_day":1}, "practice": {"count":1, "per_day":1}},
+        "Системи штучного інтелекту":
+        {"control": "exam", "teachers": ["Мисик М.М."], "lection": {"count":2, "per_day":1}, "laba": {"count":0, "per_day":1}, "practice": {"count":0, "per_day":1}}
+      },
+      "studying_at":["monday", "tuesday", "wednesday", "thirdsday"],
+      "max_lesson_per_day": 3
+    },
+    "kn-49":
+    {
+      "lessons":
+      {
+        "Методи та системи штучного інтелекту":
+        {"control": "exam", "teachers": ["Мисик"], "lection": {"count":2, "per_day":1}, "laba": {"count":1, "per_day":1}, "practice": {"count":0, "per_day":1}},
+        "Інтелектуальний аналіз даних":
+        {"control": "exam", "teachers": ["Ковівчак"], "lection": {"count":2, "per_day":1}, "laba": {"count":1, "per_day":1}, "practice":{"count":0, "per_day":1}},
+        "Основи робототехніки та мобільного комп'ютингу'":
+        {"control": "exam", "teachers": ["Борисов"], "lection":{"count":3, "per_day":1}, "laba":{"count":2, "per_day":1}, "practice":{"count":0, "per_day":1}},
+        "Технології розподілених систем та паралельних обчислень ч.2":
+        {"control": "exam", "teachers": ["???"], "lection": {"count":2, "per_day":1}, "laba": {"count":2, "per_day":1}, "practice":{"count":0, "per_day":1}},
+        "Інтелектуальна власніть":
+        {"control": "залік", "teachers": ["Машевська"], "lection": {"count":1, "per_day":1}, "laba": {"count":0, "per_day":1}, "practice": {"count":1, "per_day":1}},
+        "Програмування для мобільних платформ":
+        {"control": "exam", "teachers": ["Мисик М.М."], "lection": {"count":2, "per_day":1}, "laba": {"count":2, "per_day":1}, "practice": {"count":0, "per_day":1}}
+      },
+      "studying_at":["monday", "tuesday", "wednesday", "thirdsday"],
+      "max_lesson_per_day": 3
+    }
+  },
+  "auditory":
+  {
+    "107":{"seats_number":22, "board": 1},
+    "202":{"seats_number":26, "board": 0},
+    "203":{"seats_number":62, "board": 3},
+    "207":{"seats_number":26, "board": 3},
+    "209":{"seats_number":14, "board": 2},
+    "302":{"seats_number":48, "board": 3},
+    "304":{"seats_number":30, "board": 2},
+    "305":{"seats_number":48, "board": 3},
+    "310":{"seats_number":16, "board": 1},
+    "404":{"seats_number":34, "board": 3},
+    "405":{"seats_number":64, "board": 3},
+    "406":{"seats_number":26, "board": 2},
+    "410":{"seats_number":33, "board": 3},
+    "501":{"seats_number":24, "board": 0},
+    "503":{"seats_number":15, "board": 0},
+    "504":{"seats_number":16, "board": 0},
+    "403":{"seats_number":5, "board": 1},
+    "508":{"seats_number":16, "board": 0}
+  }
+}
