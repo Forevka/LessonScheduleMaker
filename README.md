@@ -1,2 +1,2 @@
 ### Lesson Schedule Maker
-Code example at make_schedule.py
+Code example in make_schedule.py
