@@ -1,4 +1,5 @@
 import random
+import textwrap
 import xlsxwriter
 
 ##############
@@ -25,16 +26,9 @@ class Group(object):
         return self.lessons_practice
 
     def make_schedule(self):
+        cur = 1
         for lesson in self.all_lessons:
-            print(lesson)
-            #for one in range(lesson.count):
-            self.day_controller.add_lesson(lesson, self.max_lesson_per_day)
-                #print('random', au)
-                #les = au.add_lesson(lesson, self.max_lesson_per_day, day_offset = )
-                #print('lesson', les)
-                #self.schedule.append(les)
-
-            #auditory.
+            cur = self.day_controller.add_lesson(lesson, self.max_lesson_per_day, cur)
 
 
 class Lesson(object):
@@ -50,7 +44,8 @@ class Lesson(object):
         return str(self)
 
     def __str__(self):
-        return "Lesson: {} Group: {} Type: {}".format(self.name, self.group, self.type)
+        shortened = textwrap.shorten(text=self.name, width=50, placeholder = '...')
+        return "Lesson: {} Group: {} Type: {}".format(shortened, self.group, self.type)
 
 class DayController(object):
     def __init__(self, available_days, available_auditory, lessons_time):
@@ -62,13 +57,15 @@ class DayController(object):
         #for i in self.days_denominator:
         #    print(i)
 
-    def add_lesson(self, lesson, max_lesson_per_day):
+    def add_lesson(self, lesson, max_lesson_per_day, current):
         offset = 0
         list_day = self.get_day(offset)
         #print(day)
         for i in range(lesson.count):
             #print(i+1)
-            if (i+1 // 2)==0:
+            current = 0 if current == 1 else 1
+            day = None
+            if (current)==0:
                 day = list_day[0]
                 #print(day)
                 lesson_day = day.get_group_lesson_count(lesson.group)
@@ -92,15 +89,9 @@ class DayController(object):
                     lesson_day = day.get_group_lesson_count(lesson.group)
 
                 day.add_lesson(lesson)
-                #print(day)
-            '''lesson_day = day.get_group_lesson_count(lesson.group)
-            while(lesson_day >= max_lesson_per_day):
-                offset += 1
-                day = self.get_day(offset)
-                #print(day)
-                lesson_day = day.get_group_lesson_count(lesson.group)
-                #print(lesson_day)
-            return day.add_lesson(lesson)'''
+            #print(day)
+
+        return current
 
     def get_day(self, offset):
         #print(offset)
@@ -113,8 +104,8 @@ class DayController(object):
         return self.days_numerator[offset]
 
     def show_schedule(self):
-        for i in [*self.days_denominator, *self.days_numerator]:
-            print(i)
+        for d, n in zip(self.days_denominator, self.days_numerator):
+            print(d, n)
             #print()
             #print(i.get_group_lesson_count('kn-323'))
 
@@ -218,5 +209,5 @@ class Auditory(object):
         to = ''
         for i in self.schedule:
             if self.schedule[i]['lesson'] is not None:
-                to += "\t\t"+str(i)+" "+self.schedule[i]['lesson'].group+" "+str(self.schedule[i]['lesson'])+"\n\n"
+                to += "\t\t"+str(i)+" "+self.schedule[i]['lesson'].group+" "+str(self.schedule[i]['lesson'])+"\n"
         return "Auditory: {} seats: {} board: {}\n{}".format(self.number, self.seats_number, self.board, to)
