@@ -11,19 +11,15 @@ def make_lessons_time(lessons):
 #print()
 
 def make_schedule(d):
-    days = {}
-    days_list = []
-    #print(d['auditory'])
-    lessons_time = d['start_at']
-    #auditory_controller = Auditories(d['auditory'], d['available_days'], lessons_time)
     day_controller = DayController(d['available_days'], d['auditory'], d['start_at'])
     for group in d['group_list']:
         g = Group(group, d['group'][group]['studying_at'], d['group'][group]['max_lesson_per_day'], d['group'][group]['lessons'], day_controller)
         #for lesson_name, lesson_data in d['group'][group]['lessons'].items():
         #    pass
         g.make_schedule()
+        #g.show_schedule()
 
     day_controller.show_schedule()
-    day_controller.save_to_table()
+    #day_controller.save_to_table()
 
 make_schedule(d)

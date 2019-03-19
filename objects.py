@@ -30,6 +30,13 @@ class Group(object):
         for lesson in self.all_lessons:
             cur = self.day_controller.add_lesson(lesson, self.max_lesson_per_day, cur)
 
+    def show_schedule(self):
+        for i in [*self.get_lections(), *self.get_labas(), *self.get_practices()]:
+            if i.count > 0:
+                print(i.auditory.father.name, i.auditory.father.type)
+                print(i.auditory)
+
+
 
 class Lesson(object):
     def __init__(self, name, group, type, count, per_day):
@@ -103,9 +110,10 @@ class DayController(object):
     def get_day_numer(self, offset):
         return self.days_numerator[offset]
 
-    def show_schedule(self):
+    def show_schedule(self, group = None):
         for d, n in zip(self.days_denominator, self.days_numerator):
-            print(d, n)
+            print(d)
+            print(n)
             #print()
             #print(i.get_group_lesson_count('kn-323'))
 
@@ -163,10 +171,11 @@ class Day(object):
     def __str__(self) -> str:
         to = ''
         for i in self.get_auditories():
+            #if i.get_lesson_count() > 0:
             to += '\t'+str(i)
-            #print(self.day_schedule[i])
-            #if self.day_schedule[i]['lesson']['group'] is not None:
-            #    to += "\t"+str(i)+" "+self.day_schedule[i]['lesson']['group']+" "+self.day_schedule[i]['lesson']['name']+" "+self.day_schedule[i]['lesson']['auditory'].number+" "+self.day_schedule[i]['lesson']['type']+"\n"
+                #print(self.day_schedule[i])
+                #if self.day_schedule[i]['lesson']['group'] is not None:
+                #    to += "\t"+str(i)+" "+self.day_schedule[i]['lesson']['group']+" "+self.day_schedule[i]['lesson']['name']+" "+self.day_schedule[i]['lesson']['auditory'].number+" "+self.day_schedule[i]['lesson']['type']+"\n"
 
         return "Day: {}\t{}\n{}".format(self.name, "Знаменник" if self.type == 0 else "Чисельник", to)
 
@@ -186,6 +195,7 @@ class Auditory(object):
         if para_number<6:
             if self.schedule[para_number]['lesson'] is None:
                 self.schedule[para_number]['lesson'] = lesson
+                lesson.auditory = self
                 return para_number
             else:
                 return False#self.add_lesson(lesson,para_number+1)
